@@ -1,0 +1,34 @@
+        {php}
+            $mid = xxx_mid;
+            $orderId =$this->get_template_vars('order_number');
+            $query = "SELECT
+            `product_id` as produktId,
+            `quantity` as quantity,
+            `price` as price
+             FROM `st_order_product` WHERE `order_id` = ". $orderId;
+            $mysql=mysql_connect('xxx_host', 'xxx_user', 'xxx_password');
+            mysql_select_db('xxx_db');
+            $res=mysql_query($query) or die ("blad wykonania zapytania");
+            $string_id = '';
+            $string_quantity = '';
+            $string_price = '';
+            $string_discount = '';
+            while($row = mysql_fetch_array($res))
+            {
+                $string_id .= $row['produktId'].':'; $string_quantity .= $row['quantity'].':'; $string_price .= sprintf("%.2f",$row['price']).":"; $string_discount.= ''.':';
+            }
+            mysql_close($mysql);
+            $string_id = substr($string_id,0,-1);
+            $string_quantity = substr($string_quantity,0,-1);
+            $string_price = substr($string_price,0,-1);
+            $string_discount = substr($string_discount,0,-1);
+            $string_webe=$mid.'|'.$orderId.'|'. $string_id .'|'. $string_quantity.'|'.$string_price.'|'. $string_discount;
+        {/php}
+            <form name="webe_basket" style="display:none" >
+            <textarea id="basket" wrap="physical" name="basket">
+        {php}
+            echo $string_webe;
+        {/php}
+            </textarea>
+            </form>
+            <script src="https://webep1.com/confirm.js" type="text/javascript" defer="defer"></script>
