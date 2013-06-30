@@ -8,7 +8,7 @@ gdzie ``theme-name`` to aktualnie używana skórka na końcu doklejając zawarto
 Generowanie XML
 ===============
 
-Skopiuj do publicznego katalogu plik webep-xml-generator.php a następnie dodaj do cronjobs polecenie: ::
+Skopiuj do publicznego katalogu plik webep-xml-generator.php a następnie dodaj do cronjobs polecenie (poprawiając ścieżkę): ::
 
   php /home/user/domains/simple.com/public_html/soteshop/web/webep-xml-generator.php >> /home/user/domains/simple.com/public_html/soteshop/web/xml/products.xml
 
