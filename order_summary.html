@@ -4,7 +4,7 @@
             $query = "SELECT
             `product_id` as produktId,
             `quantity` as quantity,
-            `price` as price
+            `price_brutto` as price
              FROM `st_order_product` WHERE `order_id` = ". $orderId;
             $mysql=mysql_connect('xxx_host', 'xxx_user', 'xxx_password');
             mysql_select_db('xxx_db');
